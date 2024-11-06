@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        
+        <h1 class="text-4xl font-extrabold text-center text-purple-600 mb-10">Lista de Productos</h1> <!-- Cambié tamaño y color del texto -->
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <!-- Ajusté el espacio entre tarjetas -->
+            {% for producto in productos %}
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"> <!-- Efecto de sombra al pasar el mouse -->
+                    <h2 class="text-2xl font-semibold text-gray-800">{{ producto.nombre }}</h2> <!-- Aumenté el tamaño de la fuente -->
+                    <p class="text-gray-500 mb-4">{{ producto.descripcion }}</p> <!-- Cambié el color del texto y añadí un margen inferior -->
+                    <p class="text-xl text-green-600 font-bold">Precio: ${{ producto.precio }}</p> <!-- Cambié color y tamaño del precio -->
+                </div>
+            {% empty %}
+                <p class="text-center w-full text-lg font-medium text-gray-700">No hay productos disponibles.</p> <!-- Ajusté el estilo del mensaje vacío -->
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
